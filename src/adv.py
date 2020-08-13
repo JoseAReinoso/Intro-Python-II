@@ -1,7 +1,15 @@
 from room import Room
+from player import Player
+
+#Plan
+ # 1.create room class with name and description
+ # -rooms are already linked
+ # 2.create a player object as well as room
+
+ 
 
 # Declare all the rooms
-
+#Dictionary of rooms mapping name to Room
 room = {
     'outside':  Room("Outside Cave Entrance",
                      "North of you, the cave mount beckons"),
@@ -39,13 +47,57 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-# Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
+player = Player("Jose", room['outside'])
+command=''
+
+while command != 'q':
+     # GAME DIALOG # * Prints the current description (the textwrap module might be useful here).
+    print(f"    Current player:   {player.name}")
+    print(f"    Current Room:     {player.current_room.name}")
+    # * Prints the current room name
+    print(f"    Room Description: {player.current_room.description}")
+ # PLAYER MOVEMENT AND COMMANDS
+ # * Waits for user input and decides what to do.
+
+    command = input('Please enter a command. Direction: [n] , [s] , [e] , [w]. Actions: [i] , [take] , [get] , [drop] , [q] = quit the game: ')
+    # Write a loop that:
+
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
-#
+
+    if command == 'n':
+        if player.current_room.n_to != None:
+            player.current_room = player.current_room.n_to
+        else:
+            print("You can not go here please try again")
+
+    elif command  == 's':
+        if player.current_room.s_to != None:
+                player.current_room = player.current_room.s_to
+        else:
+                print("You can not go here please try again!")
+                input('Press [n], [s], [e], [w] to move. Press [q] to quit: ')
+        
+    elif command == 'e':
+        if player.current_room.e_to != None:
+                player.current_room = player.current_room.e_to
+        else:
+                print("You can not go here please try again!")
+                input('Press [n], [s], [e], [w] to move. Press [q] to quit: ')
+        
+    elif command == 'w':
+        if player.current_room.w_to != None:
+                player.current_room = player.current_room.w_to
+        else:
+                print("You can not go here please try again!")
+                input('Press [n], [s], [e], [w] to move. Press [q] to quit: ')       
+
+
 # If the user enters "q", quit the game.
+ # Q TO QUIT THE GAME
+    if command == 'q':
+        print("You have exited the game.")
+        break
+
+
+ 
