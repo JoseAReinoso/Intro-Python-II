@@ -1,12 +1,6 @@
 from room import Room
 from player import Player
 
-#Plan
- # 1.create room class with name and description
- # -rooms are already linked
- # 2.create a player object as well as room
-
-
 
 # Declare all the rooms
 #Dictionary of rooms mapping name to Room
@@ -46,7 +40,7 @@ player = Player("Jose", room['outside'])
 #setting up a default comman variable
 command=''
 
-#this is saying as long q word is not 
+#this is saying as long q word is not press it will run whats inside otherwise it will do the next code
 while command != 'q':
      # GAME DIALOG # * Prints the current description (the textwrap module might be useful here).
     print(f"    Current player:   {player.name}")
@@ -55,8 +49,8 @@ while command != 'q':
     print(f"    Room Description: {player.current_room.description}")
  # PLAYER MOVEMENT AND COMMANDS
  # * Waits for user input and decides what to do.
-
-    command = input('Please enter a command. Direction: [n] , [s] , [e] , [w], [q] = quit the game: ')
+ # MVP # 2 Add a new type of sentence the parser can understand: two words. example take drop etc etc.
+    command = input('Please enter a command. Direction: [n] , [s] , [e] , [w]. Actions [drop] , [take] , [i] , [get] , [q] = quit the game: ')
     # Write a loop that:
 
 # If the user enters a cardinal direction, attempt to move to the room there.
