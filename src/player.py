@@ -29,4 +29,25 @@ class Player:
         else:
             return f"Name: {self.name} is in {self.current_room.name} \n {self.current_room.description}"       
 
+
+    def __repr__(self):
+        return f'self.name = {self.name} ; self.rooms = {self.current_room}'
+
+    def update_room(self, room):
+        self.current_room = room.name
+
+    def add_item(self, item):
+        self.inventory.append(item)
+
+    def remove_item(self, item):
+        if item in self.items:
+            self.items.remove(item)
+            item.ondrop()
+            return item
+        else:
+            return False
+
+    def list_inventory(self):
+        print(self.inventory)                   
+
     

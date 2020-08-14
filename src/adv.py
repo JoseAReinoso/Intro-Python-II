@@ -1,6 +1,6 @@
 from room import Room
 from player import Player
-
+from item import Item
 
 # Declare all the rooms
 #Dictionary of rooms mapping name to Room
@@ -35,10 +35,24 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+#mvp2 creating items =
+
+baseballBat = Item("BaseballBat", "hit a home run with it")
+metsHat = Item("metsHat", "be a real mets fan")
+baseball = Item("baseball" , "Grab the baseball and strike that guy out")
+
+#mvp2 putting items into rooms =
+room['overlook'].add_item(baseballBat)
+room['foyer'].add_item(metsHat)
+room['outside'].add_item(baseball)
+
+
 # Make a new player object that is currently in the 'outside' room.
 player = Player("Jose", room['outside'])
 #setting up a default comman variable
 command=''
+playerInventory = []
+roomInventory = []
 
 #this is saying as long q word is not press it will run whats inside otherwise it will do the next code
 while command != 'q':
@@ -81,7 +95,9 @@ while command != 'q':
                 player.current_room = player.current_room.w_to
         else:
                 print("You can not go here please try again!")
-                input('Press [n], [s], [e], [w] to move. Press [q] to quit: ')       
+                input('Press [n], [s], [e], [w] to move. Press [q] to quit: ')   
+
+               
 
 
 # If the user enters "q", quit the game.
